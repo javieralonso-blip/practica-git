@@ -9,12 +9,14 @@ int main() {
 
     prev_ratio = (double)b / a;
     do {
-        temp = a + b;
-        a = b;
-        b = temp;
-        ratio = (double)b / a;
-        n++;
-    } while (fabs(ratio - prev_ratio) > precision);
+    temp = a + b;
+    a = b;
+    b = temp;
+
+    prev_ratio = ratio;   // ← primero guardas el anterior
+    ratio = (double)b / a;
+    n++;
+} while (fabs(ratio - prev_ratio) > precision);
     printf("Razon aurea: %.5f\n", ratio);
     printf("Iteraciones: %d\n", n);
 
